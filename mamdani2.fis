@@ -1,0 +1,43 @@
+[System]
+Name='mamdani2'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=5
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Temprature'
+Range=[0 60]
+NumMFs=3
+MF1='low':'trimf',[-11.6 -4.20634920634921 24.1]
+MF2='med':'trimf',[9.92063492063492 24.7 40.6]
+MF3='high':'trimf',[22.5 33.8888888888889 87.2]
+
+[Input2]
+Name='wind'
+Range=[0 150]
+NumMFs=3
+MF1='low':'trimf',[-46.6 -4.56349206349206 78.4]
+MF2='med':'trimf',[27.1269841269841 69.2269841269841 116.426984126984]
+MF3='high':'trimf',[62.504126984127 124.984126984127 187.484126984127]
+
+[Output1]
+Name='FanSpeed'
+Range=[0 1]
+NumMFs=3
+MF1='low':'trimf',[-0.283802116402116 0.000297883597883547 0.499897883597884]
+MF2='med':'trimf',[0.197110582010582 0.454010582010582 0.702010582010582]
+MF3='high':'trapmf',[0.604883597883598 0.664883597883598 1.0148835978836 1.3078835978836]
+
+[Rules]
+1 1, 1 (1) : 2
+2 3, 2 (1) : 2
+3 1, 3 (1) : 2
+3 3, 2 (1) : 2
+1 3, 1 (1) : 2
